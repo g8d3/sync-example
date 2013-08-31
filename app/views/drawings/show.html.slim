@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Description:
+  = @drawing.description
+
+= link_to 'Edit', edit_drawing_path(@drawing)
+'|
+= link_to 'Back', drawings_path
