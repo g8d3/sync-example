@@ -33,6 +33,8 @@ group :doc do
 end
 
 gem 'slim-rails'
+gem 'quiet_assets'
+gem 'mysql2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
