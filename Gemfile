@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -35,6 +32,13 @@ end
 gem 'slim-rails'
 gem 'quiet_assets'
 gem 'mysql2'
+gem 'thin'
+
+group :development do
+  gem 'awesome_print'
+  gem 'hirb'
+  gem 'wirble'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
