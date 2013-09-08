@@ -29,11 +29,13 @@ gem 'quiet_assets'
 gem 'mysql2'
 gem 'thin'
 gem 'inherited_resources'
+gem 'devise'
 
 group :development do
   gem 'awesome_print'
   gem 'hirb'
   gem 'wirble'
+  gem 'letter_opener'
 end
 
 group :doc do
@@ -44,6 +46,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara-webkit'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
