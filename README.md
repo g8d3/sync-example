@@ -12,6 +12,18 @@ See `.ruby-version` file.
 
 See `Gemfile` and `Gemfile.lock` files.
 
+* Install gems
+
+```
+bundle binstubs rspec-core
+rails generate rspec:install
+Capybara.javascript_driver = :webkit
+rails generate devise:install
+rails generate devise MODEL
+config.action_mailer.delivery_method = :letter_opener
+
+```
+
 * Configuration
 
 See `config` directory.
