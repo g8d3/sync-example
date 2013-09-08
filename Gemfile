@@ -28,6 +28,7 @@ gem 'slim-rails'
 gem 'quiet_assets'
 gem 'mysql2'
 gem 'thin'
+gem 'inherited_resources'
 
 group :development do
   gem 'awesome_print'
