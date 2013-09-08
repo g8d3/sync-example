@@ -1,0 +1,6 @@
+- [:notice, :error, :alert].each do |level|
+  - unless flash[level].blank?
+    div class="alert alert-#{flash_class(level)}"
+      a.close aria-hidden="true" data-dismiss="alert" href="#" &times;
+      = content_tag :p, flash[level]
+

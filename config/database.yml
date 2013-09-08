@@ -6,3 +6,8 @@ local: &local
 development:
   <<: *local
   database: unnamed_development
+
+test:
+  <<: *local
+  database: unnamed_test
+

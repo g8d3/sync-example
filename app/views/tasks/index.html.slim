@@ -1,0 +1,24 @@
+.row
+  .col-md-4.col-md-offset-2
+
+    h1 Listing tasks
+
+    table.table.table-striped
+      tr
+        th Title
+        th
+        th
+
+      - @tasks.each do |task|
+        tr
+          td = task.title
+          td = link_to 'Edit', edit_task_path(task), remote: true
+          td = link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+
+    br
+
+    = link_to 'New Task', new_task_path, remote: true
+
+  - @task = Task.new
+  = render 'new'
+

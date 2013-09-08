@@ -1,5 +1,10 @@
 h1 Tasks
 
+= simple_form_for :user do |f|
+  = f.input :email
+  = f.submit
+
+
 
 = link_to 'Sign in', new_user_session_path
 br
