@@ -1,6 +1,6 @@
 class TasksController < InheritedResources::Base
   enable_sync only: [:create, :update, :destroy]
-  respond_to :html, :js
+  respond_to :js
 
   def show
     super do |format|
