@@ -14,4 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min
+//= require mousetrap.min
+//= require mousetrap-global-bind.min
+//= require_self
 //= require_tree .
+//
+
+window.unnamed = {}
+

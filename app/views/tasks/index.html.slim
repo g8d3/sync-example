@@ -3,21 +3,20 @@
 
     h1 Listing tasks
 
-    table.table.table-striped
+    table.table
       tr
         th Title
         th
-        th
 
-      - @tasks.each do |task|
-        tr
-          td = task.title
-          td = link_to 'Edit', edit_task_path(task), remote: true
-          td = link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+      - @tasks.each.with_index(1) do |task, i|
+        tr.task data-id=task.id
+          td = link_to task.title, edit_task_path(task), remote: true
+          td = link_to task, :method => :delete, remote: true, title: :Destroy do
+            span.glyphicon.glyphicon-trash
 
     br
 
-    = link_to 'New Task', new_task_path, remote: true
+    = link_to 'New Task', new_task_path, remote: true, id: 'new-task'
 
   - @task = Task.new
   = render 'new'
