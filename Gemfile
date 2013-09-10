@@ -31,6 +31,8 @@ gem 'thin'
 gem 'inherited_resources'
 gem 'devise'
 gem 'simple_form'
+gem 'faye'
+gem 'sync'
 
 group :development do
   gem 'awesome_print'

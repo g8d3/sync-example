@@ -18,7 +18,7 @@
 //= require mousetrap-global-bind.min
 //= require_self
 //= require_tree .
-//
+//= require sync
 
 window.unnamed = {}
 

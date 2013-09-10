@@ -1,4 +1,5 @@
 class TasksController < InheritedResources::Base
+  enable_sync only: [:create, :update, :destroy]
   respond_to :html, :js
 
   def show

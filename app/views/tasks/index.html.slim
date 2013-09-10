@@ -8,11 +8,8 @@
         th Title
         th
 
-      - @tasks.each.with_index(1) do |task, i|
-        tr.task data-id=task.id
-          td = link_to task.title, edit_task_path(task), remote: true
-          td = link_to task, :method => :delete, remote: true, title: :Destroy do
-            span.glyphicon.glyphicon-trash
+      - @tasks.each do |task|
+        = sync partial: 'task_row', resource: task
 
     br
 

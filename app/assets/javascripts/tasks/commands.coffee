@@ -6,8 +6,8 @@
     @$tasks = -> $('tr.task')
 
     @new = =>
-      $('#new-task').click()
-      $('#task_title').focus()
+      $('#new-task').click().on 'ajax:success', ->
+        $('#task_title').focus()
 
     @edit = =>
       @$active().find('a[href*=edit]').click().
@@ -25,8 +25,8 @@
 
     @$inactive = => @$active().removeClass('active')
 
-    @next = => $(@$inactive().next('.task')[0] or @$tasks().first()).addClass('active')
-    @prev = => $(@$inactive().prev('.task')[0] or @$tasks().last()).addClass('active')
+    @next = => $(@$inactive().nextAll('.task')[0] or @$tasks().first()).addClass('active')
+    @prev = => $(@$inactive().prevAll('.task')[0] or @$tasks().last()).addClass('active')
 
   ).call @tasks
 ).call unnamed
