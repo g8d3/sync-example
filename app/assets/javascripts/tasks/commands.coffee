@@ -1,7 +1,7 @@
 (->
 
   (->
-    @selectedClass = 'active'
+    @class = 'warning'
 
     @$tasks = -> $('tr.task')
 
@@ -21,12 +21,14 @@
       @next()
       old.find('a[data-method=delete]').click()
 
-    @$active = => @$tasks().filter('.active')
+    @$active = => @$tasks().filter(".#{@class}")
 
-    @$inactive = => @$active().removeClass('active')
+    @$inactive = => @$active().removeClass(@class)
 
-    @next = => $(@$inactive().nextAll('.task')[0] or @$tasks().first()).addClass('active')
-    @prev = => $(@$inactive().prevAll('.task')[0] or @$tasks().last()).addClass('active')
+    @next = => $(@$inactive().nextAll('.task')[0] or @$tasks().first()).
+      addClass(@class)
+    @prev = => $(@$inactive().prevAll('.task')[0] or @$tasks().last()).
+      addClass(@class)
 
   ).call @tasks
 ).call unnamed
