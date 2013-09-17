@@ -4,7 +4,13 @@ class TasksController < InheritedResources::Base
 
   alias_method :resource_url, :collection_url
 
+  def resource
+    super
+  rescue ActiveRecord::RecordNotFound
+    @resource ||= Task.new
+  end
+
   def permitted_params
-    params.permit(:task => [:title, :description])
+    params.permit(:task => [:text])
   end
 end

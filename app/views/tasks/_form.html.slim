@@ -1,18 +1,21 @@
-= simple_form_for @task, html: { role: :form } do |f|
-  - if @task.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
-      ul
-        - @task.errors.full_messages.each do |message|
-          li = message
+#resource.col-md-4
+  .panel.panel-default
+    .panel-heading
+      .panel-title = (resource.persisted? ? 'Edit ' : 'New ') + resource_class.name
 
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
-  = f.submit 'Save', class: 'btn btn-default'
+    .panel-body
+      == simple_form_for resource, remote: true, html: { role: :form } do |f|
+        - if resource.errors.any?
+          #error_explanation
+            h2 = "#{pluralize(resource.errors.count, "error")} prohibited this #{resource_class.name} from being saved:"
+            ul
+              - resource.errors.full_messages.each do |message|
+                li = message
+
+        = f.input :text, wrapper_html: { class: 'form-group' },
+          input_html: { class: 'form-control' }
+
+        = f.submit 'Save', class: 'btn btn-default'
 
 
 

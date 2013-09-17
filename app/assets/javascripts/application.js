@@ -16,9 +16,18 @@
 //= require bootstrap.min
 //= require mousetrap.min
 //= require mousetrap-global-bind.min
-//= require_self
-//= require_tree .
+//= require mousetrap-bind-dictionary.min
+// require angular.min
 //= require sync
+//= require_self
+//= require_tree ./unnamed
+//= require aliases
 
-window.unnamed = {}
+window.unnamed      = {
+  controllers:   {},
+  models:        {},
+  views:         {}
+}
+
+
 

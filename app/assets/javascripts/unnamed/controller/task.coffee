@@ -1,0 +1,2 @@
+unnamed.controllers.task = {
+}

@@ -14,8 +14,7 @@
 ActiveRecord::Schema.define(version: 20130908211229) do
 
   create_table "tasks", force: true do |t|
-    t.string   "title"
-    t.text     "description"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
