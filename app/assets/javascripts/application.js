@@ -12,22 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap.min
 //= require mousetrap.min
 //= require mousetrap-global-bind.min
 //= require mousetrap-bind-dictionary.min
-// require angular.min
 //= require sync
 //= require_self
 //= require_tree ./unnamed
 //= require aliases
+// require routes
 
 window.unnamed      = {
-  controllers:   {},
-  models:        {},
-  views:         {}
+  remote:     {},
+  local:      {}
 }
+
 
 
 

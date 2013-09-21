@@ -1,7 +1,11 @@
-#resource.col-md-4
+- edit = defined?(edit) ? edit : false
+- slug = ( edit || resource.persisted? ? 'edit' : 'new')
+
+.col-md-4 id="#{ slug }-resource"
   .panel.panel-default
     .panel-heading
-      .panel-title = (resource.persisted? ? 'Edit ' : 'New ') + resource_class.name
+      .panel-title
+        = "#{ slug.humanize } #{ resource_class.name }"
 
     .panel-body
       == simple_form_for resource, remote: true, html: { role: :form } do |f|

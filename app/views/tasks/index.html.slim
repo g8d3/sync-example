@@ -19,9 +19,13 @@
               = sync partial: 'task_row', resource: resource
             = sync_new partial: 'task_row', resource: resource
 
-        .btn.btn-default New #{ resource_class.name }
+        .do-new.btn.btn-default New #{ resource_class.name }
 
-        .btn.btn-default Help
+        .do-help.btn.btn-default Help
 
   = render 'new'
+
+  = render 'edit'
+  coffee:
+    $('#edit-resource').hide()
 
