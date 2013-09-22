@@ -1,6 +1,6 @@
 class TasksController < InheritedResources::Base
   enable_sync
-  respond_to :js
+  respond_to :json
 
   alias_method :resource_url, :collection_url
 

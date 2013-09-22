@@ -1,13 +1,18 @@
-task =
-  tr:            (id) -> "tr[data-id=#{ id }]"
-  selectedClass: 'active'
-  editPath:      (id) -> "tasks/#{ id }/edit"
+tasks = unnamed.remote.tasks ||= {}
 
-unnamed.remote.task = (attrs = {}) ->
-  ( ->
-    $.getScript(@editPath(id))
-  ).call task
+tasks.edit = (form) ->
+  id = $('#edit-resource #task_id').val()
+  url = "/tasks/#{ id }"
+  request = $.ajax type: 'PUT', url: url, data: $(form).serialize(), dataType: 'json'
+  request.done ->
+    $('form').map -> @reset()
+    $(':submit').blur()
 
-$.extend unnamed.task, task
+tasks.new = (form) ->
+  url = "/tasks"
+  request = $.ajax type: 'POST', url: url, data: $(form).serialize(), dataType: 'json'
 
+  request.done ->
+    $('form').map -> @reset()
+    $(':submit').blur()
 

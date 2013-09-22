@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Stylus syntax here: http://learnboost.github.com/stylus
 
-#tasks .task{
+#resources .task{
   &:hover{
     cursor: pointer;
   }
@@ -12,4 +12,9 @@
     width: 100%;
     height: 100%;
   }
+
+  .delete{
+    width: 50px;
+  }
+
 }

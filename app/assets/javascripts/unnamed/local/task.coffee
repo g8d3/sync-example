@@ -1,33 +1,43 @@
-props =
-  selector:  (id) -> if id then "tr.task[data-id=#{id}]" else 'tr.task'
-  class:     'active'
-  editPath:  (id) -> "tasks/#{id}/edit"
+tasks = unnamed.local.tasks ||= {}
 
-unnamed.local.tasks = (id) ->
-  if id
-    tasks().filter(props.selector(id))
-  else
-    $(props.selector())
+tasks.next = ->
+  _current = $('.task').index($('.warning'))
+  current = ( _current + 1) % $('tr.task').size()
+  $('tr.task.warning').removeClass 'warning'
+  $('tr.task').eq(current).addClass 'warning'
 
-unnamed.local.task = ->
-  @tasks().filter(".#{props.class}").first()
+tasks.prev = ->
+  _current = $('.task').index($('.warning'))
+  if (current = _current - 1) == -1 then current = $('tr.task').size() - 1
+  $('tr.task.warning').removeClass 'warning'
+  $('tr.task').eq(current).addClass 'warning'
 
-unnamed.local.tasks.current = unnamed.local.task
+tasks.delete = ->
+  id = $('tr.task.warning').data('id')
+  if id?
+    url = "/tasks/#{ id }"
+    $.ajax type: 'delete', url: url, dataType: 'json'
 
-unnamed.local.tasks.next = ->
-  current = @current().removeClass(@class)
-  (current.next(@selector()) || @())
+tasks.edit = ->
+  id = $('tr.task.warning').data('id')
+  url = "/tasks/#{ id }/edit"
+  request = $.ajax url: url, dataType: 'json'
 
-unnamed.local.tasks.activeNext = ->
-  @active() and @inactive(@current())
+  request.done (resource) ->
+    tasks.fillForm(resource)
+    $('#new-resource').hide()
+    input = 'input:visible:not(:submit), textarea:visible'
+    $('#edit-resource').show().find(input).focus()
 
-unnamed.local.tasks._active = (id) ->
-  @tasks(id).addClass @class
+tasks.fillForm = (resource) ->
+  for own k, v of resource
+    $("#edit-resource #task_#{k}").val v
 
-unnamed.local.tasks.actived = ->
-  @tasks().filter(@class)
+tasks.new = ->
+  $('#edit-resource').hide()
+  input = 'input:visible:not(:submit), textarea:visible'
+  $('#new-resource').show().find(input).focus()
 
-
-$.extend unnamed.local.task, props
-$.extend unnamed.local.tasks, props
-
+tasks.mouseActive = (event) ->
+  $('tr.task.warning').removeClass 'warning'
+  $(@).addClass 'warning'

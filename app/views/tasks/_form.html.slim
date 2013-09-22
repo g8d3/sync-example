@@ -2,24 +2,27 @@
 - slug = ( edit || resource.persisted? ? 'edit' : 'new')
 
 .col-md-4 id="#{ slug }-resource"
-  .panel.panel-default
+  /.panel.panel-default
     .panel-heading
       .panel-title
         = "#{ slug.humanize } #{ resource_class.name }"
 
     .panel-body
-      == simple_form_for resource, remote: true, html: { role: :form } do |f|
-        - if resource.errors.any?
-          #error_explanation
-            h2 = "#{pluralize(resource.errors.count, "error")} prohibited this #{resource_class.name} from being saved:"
-            ul
-              - resource.errors.full_messages.each do |message|
-                li = message
+  h1 #{ slug.humanize } #{ resource_class.name }
+  == simple_form_for resource, html: { role: :form } do |f|
+    - if resource.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(resource.errors.count, "error")} prohibited this #{resource_class.name} from being saved:"
+        ul
+          - resource.errors.full_messages.each do |message|
+            li = message
 
-        = f.input :text, wrapper_html: { class: 'form-group' },
-          input_html: { class: 'form-control' }
+    = f.input :id, as: :hidden
 
-        = f.submit 'Save', class: 'btn btn-default'
+    = f.input :text, wrapper_html: { class: 'form-group' },
+      input_html: { class: 'form-control' }
+
+    = f.submit 'Save', class: 'btn btn-default'
 
 
 

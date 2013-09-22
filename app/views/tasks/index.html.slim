@@ -4,28 +4,28 @@
 .row
   #resources.col-md-4.col-md-offset-2
 
-    .panel.panel-default
+    /.panel.panel-default
       .panel-heading
         .panel-title Listing #{ resource_class.name.pluralize }
 
       .panel-body
-        table.table
-          thead
-            tr
-              th Text
-              th
-          tbody
-            - collection.each do |resource|
-              = sync partial: 'task_row', resource: resource
-            = sync_new partial: 'task_row', resource: resource
+    h1 Listing #{ resource_class.name.pluralize }
+    table.table
+      thead
+        tr
+          th Text
+          th
+      tbody
+        - collection.each do |resource|
+          = sync partial: 'task_row', resource: resource
+        = sync_new partial: 'task_row', resource: resource
 
-        .do-new.btn.btn-default New #{ resource_class.name }
+    .do-new.btn.btn-default New #{ resource_class.name }
+    .do-help.btn.btn-default.pull-right Help
 
-        .do-help.btn.btn-default Help
+  = render 'form'
 
-  = render 'new'
-
-  = render 'edit'
+  = render partial: 'form', locals: { edit: true }
   coffee:
     $('#edit-resource').hide()
 

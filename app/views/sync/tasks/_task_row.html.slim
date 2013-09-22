@@ -1,5 +1,5 @@
 tr.task data-id=task.id
-  td = link_to task.text, edit_task_path(task), remote: true
-  td = link_to task, :method => :delete, remote: true, title: :Delete do
-    span.glyphicon.glyphicon-trash
+  td = task.text
+  td.delete
+    span.glyphicon.glyphicon-trash.hand
 
