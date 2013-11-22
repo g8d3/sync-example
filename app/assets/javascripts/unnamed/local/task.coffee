@@ -35,6 +35,9 @@ tasks.fillForm = (resource) ->
 
 tasks.new = ->
   $('#edit-resource').hide()
+  $('#new-resource').show()
+
+tasks.focus = ->
   input = 'input:visible:not(:submit), textarea:visible'
   $('#new-resource').show().find(input).focus()
 

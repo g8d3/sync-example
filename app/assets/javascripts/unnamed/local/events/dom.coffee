@@ -6,3 +6,4 @@ $ ->
   $('#new-resource form').submit (event) ->
     event.preventDefault()
     unnamed.remote.tasks.new(@)
+
